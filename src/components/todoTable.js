@@ -61,6 +61,10 @@ ${data
 <div class="button-box">
   <a class="save-button" href="todo.html"><i class="fa-solid fa-plus"></i></a>
 </div>
+
+<div class="button-box">
+  ${data.length == 0 ? `<p>Todo list is empty</p>` : ""}
+</div>
 `
   table.innerHTML = template
   const deleteButtons = table.querySelectorAll(".delete-button")
