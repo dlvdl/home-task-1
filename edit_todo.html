@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/3d96b58fae.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Create todo</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Edit todo</h2>
+      <form class="form" id="form">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="content" placeholder="Content" />
+        <select name="category" id="category">
+          <option value="Task">Task</option>
+          <option value="Idea">Idea</option>
+          <option value="Quote">Quote</option>
+          <option value="Quote">Random Thought</option>
+        </select>
+        <div class="button-box">
+          <div class="button-box" id="button-box">
+            <button class="button" type="submit">Save</button>
+            <a class="button" href="index.html">Back</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script type="module" src="/edit_todo.js"></script>
+  </body>
+</html>

@@ -64,7 +64,7 @@ h1 {
   color: #888;
 }
 
-button {
+.button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -75,12 +75,25 @@ button {
   transition: border-color 0.25s;
   height: 100%;
 }
-button:hover {
+.button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+.button:focus,
+.button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.save-button {
+  padding: 10px 15px;
+  background-color: #213547;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* table-styling */
@@ -92,6 +105,7 @@ button:focus-visible {
   width: 100%;
   table-layout: fixed;
   min-width: 400px;
+  margin-bottom: 1rem;
 }
 
 .table thead tr {
@@ -144,6 +158,32 @@ button:focus-visible {
 
 .table-cell {
   height: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.button-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+form {
+  min-width: 400px;
+}
+
+input {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+select {
+  font-size: 1.25em;
+  font-weight: 500;
 }
 
 @media (prefers-color-scheme: light) {

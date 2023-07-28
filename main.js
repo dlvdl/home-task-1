@@ -1,11 +1,7 @@
 import "./style.css"
-import { table } from "./src/components/Table"
-import { setupCounter } from "./counter.js"
+import { render } from "./src/service/render"
 
-document.querySelector("#app").innerHTML = `
-  <div>
-    ${table()}
-  </div>
-`
-
-// setupCounter(document.querySelector('#counter'))
+window.addEventListener("load", () => {
+  let todos = JSON.parse(localStorage.getItem("todos")) || []
+  render(todos)
+})
