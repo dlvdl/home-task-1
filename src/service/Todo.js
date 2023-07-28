@@ -109,8 +109,8 @@ export class TodoApp {
         const { name, category, content } = newData
         let dates = this.dateExtractor.extractDates(content)
         element = { ...element, name, category, content, dates }
-        return element
       }
+      return element
     })
 
     localStorage.clear()
@@ -124,8 +124,8 @@ export class TodoApp {
     let result = todos.map((element) => {
       if (element.id === +id) {
         element = { ...element, archived: !element.archived }
-        return element
       }
+      return element
     })
 
     localStorage.clear()

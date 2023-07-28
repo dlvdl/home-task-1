@@ -2,11 +2,15 @@ import { TodoApp } from "../service/Todo"
 import { render } from "../service/render"
 const todoApp = new TodoApp()
 
-export function todoTable(data) {
+export function todoTable(data, archiveVariant = false) {
   const table = document.createElement("div")
 
   const template = `
-  
+  <div>
+    <button id="toggle">${
+      archiveVariant ? "Archived todos" : "Active todos"
+    }</button>
+  </div>
   <table class="table">
   <thead>
   <tr>
@@ -23,8 +27,9 @@ export function todoTable(data) {
 </thead>
 <tbody>
 ${data
-  .map(({ name, created, category, content, dates, id, archived }, i) => {
-    if (archived) return ""
+  .map(({ name, created, category, content, dates, id, archived }) => {
+    if ((!archived && archiveVariant) || (archived && !archiveVariant))
+      return ""
     return `
     <tr class="table-row" id=${id}>
     <td class="table-cell">${name}</td>
@@ -33,11 +38,11 @@ ${data
     <td class="table-cell">${content}</td>
     <td class="table-cell">${dates.join(" ")}</td>
     <td class="table-cell">
-      <button>
-        <i class="fa-solid fa-trash" id="delete" data-id="${id}"></i>
+      <button class="delete-button" type="button" data-id="${id}">
+        <i class="fa-solid fa-trash" ></i>
       </button>
-      <button>
-        <i class="fa-solid fa-box-archive" id="archive" data-id="${id}"></i>
+      <button class="archive-button" type="button" data-id="${id}">
+        <i class="fa-solid fa-box-archive"></i>
       </button>
       <button>
       <a  href="edit_todo.html?id=${id}">
@@ -58,22 +63,32 @@ ${data
 </div>
 `
   table.innerHTML = template
-  const deleteButton = table.querySelector("#delete")
-  const archiveButton = table.querySelector("#archive")
+  const deleteButtons = table.querySelectorAll(".delete-button")
+  const archiveButtons = table.querySelectorAll(".archive-button")
+  const toggleTableButton = table.querySelector("#toggle")
 
-  if (deleteButton) {
-    deleteButton.addEventListener("click", (e) => {
-      todoApp.delete(e.target.dataset.id)
-      render()
+  if (deleteButtons) {
+    Array.from(deleteButtons).forEach((element) => {
+      element.addEventListener("click", (e) => {
+        console.log(e)
+        todoApp.delete(e.target.dataset.id)
+        render({ archiveVariant })
+      })
     })
   }
 
-  if (archiveButton) {
-    archiveButton.addEventListener("click", (e) => {
-      todoApp.changeState(e.target.dataset.id)
-      render()
+  if (archiveButtons) {
+    Array.from(archiveButtons).forEach((element) => {
+      element.addEventListener("click", (e) => {
+        todoApp.changeState(e.target.dataset.id)
+        render({ archiveVariant })
+      })
     })
   }
+
+  toggleTableButton.addEventListener("click", (e) => {
+    render({ archiveVariant: !archiveVariant })
+  })
 
   return table
 }

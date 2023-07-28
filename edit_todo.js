@@ -1,11 +1,12 @@
 import "./style.css"
+import { TodoApp } from "./src/service/Todo"
+
 const params = window.location.search
 const id = new URLSearchParams(params).get("id")
-import { TodoApp } from "./src/service/Todo"
 const form = document.querySelector("#form")
 const todoApp = new TodoApp()
 const todo = todoApp.find(id)
-console.log(todo)
+const statusBox = document.querySelector(".status-box")
 
 Array.from(form.children).forEach((element) => {
   const { name, value } = element
@@ -45,7 +46,10 @@ form.addEventListener("submit", (e) => {
     }
   })
 
-  console.log(inputData)
-
   todoApp.edit(id, inputData)
+
+  statusBox.classList.remove("hide")
+  setTimeout(() => {
+    statusBox.classList.add("hide")
+  }, 1000)
 })
