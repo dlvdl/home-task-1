@@ -133,4 +133,30 @@ export class TodoApp {
 
     return result
   }
+
+  getSummary(groupName) {
+    let todos = this.getTodos()
+    let counts = []
+
+    for (let todo of todos) {
+      let name = groupName(todo)
+      let known = counts.findIndex((c) => c.name == name)
+
+      if (known == -1) {
+        if (todo.archived) {
+          counts.push({ name, active: 0, archived: 1 })
+        } else {
+          counts.push({ name, active: 1, archived: 0 })
+        }
+      } else {
+        if (todo.archived) {
+          counts[known].archived++
+        } else {
+          counts[known].active++
+        }
+      }
+    }
+
+    return counts
+  }
 }

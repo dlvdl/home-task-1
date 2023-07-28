@@ -6,6 +6,7 @@ export function todoTable(data) {
   const table = document.createElement("div")
 
   const template = `
+  
   <table class="table">
   <thead>
   <tr>
