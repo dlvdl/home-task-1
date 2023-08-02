@@ -1,5 +1,5 @@
-import "./style.css"
-import { TodoApp } from "./src/service/Todo"
+import "../../style.css"
+import { TodoApp } from "../service/Todo"
 const form = document.querySelector("#form")
 const statusBox = document.querySelector(".status-box")
 const todoApp = new TodoApp()

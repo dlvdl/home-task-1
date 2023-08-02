@@ -45,7 +45,7 @@ ${data
         <i class="fa-solid fa-box-archive"></i>
       </button>
       <button>
-      <a  href="edit_todo_page.html?id=${id}">
+      <a  href="/src/pages/edit_todo_page.html?id=${id}">
         <i class="fa-solid fa-pen-to-square"></i>
       </a>
       </button>
@@ -59,7 +59,7 @@ ${data
   </table>
   
 <div class="button-box">
-  <a class="save-button" href="create_todo_page.html"><i class="fa-solid fa-plus"></i></a>
+  <a class="save-button" href="./src/pages/create_todo_page.html"><i class="fa-solid fa-plus"></i></a>
 </div>
 
 <div class="button-box">

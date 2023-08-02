@@ -1,4 +1,4 @@
-import { todoTable } from "../components/todoTable"
+import { todoTable } from "../pages/todoTable"
 import { summaryTable } from "../components/summaryTable"
 
 import { TodoApp } from "../service/Todo"

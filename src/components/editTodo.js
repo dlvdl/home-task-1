@@ -1,5 +1,5 @@
-import "./style.css"
-import { TodoApp } from "./src/service/Todo"
+import "../../style.css"
+import { TodoApp } from "../service/Todo"
 
 const params = window.location.search
 const id = new URLSearchParams(params).get("id")
